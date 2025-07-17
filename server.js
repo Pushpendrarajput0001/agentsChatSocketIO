@@ -8,21 +8,39 @@ const io = new Server(server, {
   cors: { origin: "*" }
 });
 
-io.on("connection", (socket) => {
-  console.log("User connected:", socket.id);
+io.of("/default").on("connection", (socket) => {
+  console.log("Default chat - connected:", socket.id);
 
   socket.on("joinRoom", (roomId) => {
     socket.join(roomId);
-    console.log(`User ${socket.id} joined room ${roomId}`);
+    console.log(`Default chat - ${socket.id} joined room ${roomId}`);
   });
 
   socket.on("sendMessage", (data) => {
     const roomId = data.chatGroupId;
-    io.to(roomId).emit("receiveMessage", data);
+    io.of("/default").to(roomId).emit("receiveMessage", data);
   });
 
   socket.on("disconnect", () => {
-    console.log("User disconnected:", socket.id);
+    console.log("Default chat - disconnected:", socket.id);
+  });
+});
+
+io.of("/agent").on("connection", (socket) => {
+  console.log("Agent chat - connected:", socket.id);
+
+  socket.on("joinRoom", (roomId) => {
+    socket.join(roomId);
+    console.log(`Agent chat - ${socket.id} joined room ${roomId}`);
+  });
+
+  socket.on("sendMessage", (data) => {
+    const roomId = data.chatGroupId;
+    io.of("/agent").to(roomId).emit("receiveMessage", data);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Agent chat - disconnected:", socket.id);
   });
 });
 
