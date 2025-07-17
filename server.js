@@ -1,14 +1,15 @@
 const express = require("express");
 const http = require("http");
-const socketIO = require("socket.io");
+const { Server } = require("socket.io");
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIO(server, {
+const io = new Server(server, {
   cors: { origin: "*" }
 });
 
-// Default Namespace
+//Message
+
 io.of("/default").on("connection", (socket) => {
   console.log("Default chat - connected:", socket.id);
 
@@ -27,7 +28,6 @@ io.of("/default").on("connection", (socket) => {
   });
 });
 
-// Agent Namespace
 io.of("/agent").on("connection", (socket) => {
   console.log("Agent chat - connected:", socket.id);
 
