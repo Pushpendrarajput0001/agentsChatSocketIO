@@ -8,6 +8,8 @@ const io = new Server(server, {
   cors: { origin: "*" }
 });
 
+//Message
+
 io.of("/default").on("connection", (socket) => {
   console.log("Default chat - connected:", socket.id);
 
