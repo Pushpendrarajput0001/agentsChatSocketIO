@@ -463,7 +463,7 @@ app.get('/getMySwappedAllDataV3PoolSMWTest', async (req, res) => {
   const tokenSymbol = req.query.tokenSymbol;
   const finalContractAddress = tokenSymbol === 'F3HE' ? contractAddressF3HE : contractAddress2
   const web3 = new Web3();
-
+  const BSCSCAN_API_KEY = '3WK22B41CG3Y67YFQ6RKJIH778Z9P2Y36J';
   try {
     const response2 = await axios.get(apiUrl + endpoint, {
       params: {
