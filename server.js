@@ -198,14 +198,14 @@ app.get('/getGlobalAllSwappedAllDataBothPools', async (req, res) => {
             if (tx.fromOrtoAddress) {
               if (tx.isUniSwap) {
                 FinalToAddress = tx.fromOrtoAddress
-                console.log('yes');
+                //console.log('yes');
               } else {
                 FinalToAddress = tx.fromOrtoAddress
               }
             } else {
               if (tx.isUniSwap) {
                 FinalToAddress = tx.from2
-                console.log('yes');
+                //console.log('yes');
               } else {
                 FinalToAddress = tx.to
               }
@@ -399,14 +399,14 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
             if (tx.fromOrtoAddress) {
               if (tx.isUniSwap) {
                 FinalToAddress = tx.fromOrtoAddress
-                console.log('yes');
+                //console.log('yes');
               } else {
                 FinalToAddress = tx.fromOrtoAddress
               }
             } else {
               if (tx.isUniSwap) {
                 FinalToAddress = tx.from2
-                console.log('yes');
+                //console.log('yes');
               } else {
                 FinalToAddress = tx.to
               }
@@ -560,7 +560,7 @@ app.get('/getMySwappedAllDataV3PoolSMWTest', async (req, res) => {
             }
             if (tx.isUniSwap) {
               FinalToAddress = userAddress
-              console.log('yes');
+              //console.log('yes');
             } else {
               FinalToAddress = userAddress
             }
