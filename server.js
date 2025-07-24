@@ -72,6 +72,8 @@ app.get('/getGlobalAllSwappedAllDataBothPools', async (req, res) => {
       }
     });
 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     const response3 = await axios.get(apiUrl + endpoint, {
       params: {
         address: contractAddress3,
@@ -273,15 +275,6 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
       }
     });
 
-    const response3 = await axios.get(apiUrl + endpoint, {
-      params: {
-        address: contractAddress3,
-        apikey: BSCSCAN_API_KEY,
-        sort: 'desc',
-        page: 1,
-        offset: 0
-      }
-    });
 
     //const response4 = await axios.get('https://api-node-1-postapi.vercel.app/fetchTransactions');
 
