@@ -360,7 +360,7 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
       const formattedTransactions = combinedTransactions.map(tx => {
         if (tx && tx.hash && tx.value && tx.value2 && tx.timeStamp && tx.tokenName && tx.tokenSymbol) {
 
-          if (tx.token2 === 'Financial Freedom Fighter') {
+          if (tx.token2 === 'F3-HE') {
             if (tx.fromOrtoAddress) {
               FinalFromAddress = tx.fromOrtoAddress
             } else {
