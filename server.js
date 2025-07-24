@@ -3,7 +3,7 @@ const http = require("http");
 const { Server } = require("socket.io");
 //ForPrice
 const axios = require('axios');
-const BSCSCAN_API_KEY = '3WK22B41CG3Y67YFQ6RKJIH778Z9P2Y36J';
+const BSCSCAN_API_KEY = 'CMTCZH4G1T9KKJNB9WF9U9XU71TDY2EXVR';
 const TOKEN_ADDRESS2 = '0x22f0A4eC481DBC370D0093dc7D35c49786947646';
 const Web3 = require('web3');
 const app = express();
