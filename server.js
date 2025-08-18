@@ -256,7 +256,7 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
   const contractAddress1 = '0x11353b85DBf896da69FC045D3c6014874Dfc2Aaa'; // First pool address
   const contractAddress2 = '0x9dc046ddf406155e50ee96c6200af60fa0f7180b'; // Second pool address
   const contractAddress3 = '0xd0e1d163c271f6f976ba23f67f3e371c9ad20f9c'; // Third pool address
-  const contractAddressF3HE = '0xcc1efe28454893016fe45f0b19b4dbc8213b38a0';
+  const contractAddressF3HE = '0xacc13a0b28d86b8ec58d959e7f97ad737a88dd6e';
 
   const apiUrl = 'https://api.bscscan.com/api';
   const endpoint = '?module=account&action=tokentx';
@@ -448,7 +448,7 @@ app.get('/getMySwappedAllDataV3PoolSMWTest', async (req, res) => {
   const contractAddress = '0x11353b85DBf896da69FC045D3c6014874Dfc2Aaa';
   const contractAddress2 = '0x9dc046ddf406155e50ee96c6200af60fa0f7180b';
   const contractAddress3 = '0xd0e1d163c271f6f976ba23f67f3e371c9ad20f9c';
-  const contractAddressF3HE = '0xcc1efe28454893016fe45f0b19b4dbc8213b38a0';
+  const contractAddressF3HE = '0xacc13a0b28d86b8ec58d959e7f97ad737a88dd6e';
   const apiUrl = 'https://api.bscscan.com/api';
   const endpoint = '?module=account&action=tokentx';
   const endpoint2 = '?module=account&action=txlist';
