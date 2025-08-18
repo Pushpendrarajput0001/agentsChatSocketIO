@@ -414,11 +414,13 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
           } else {
             FinalFromAddress = tx.to2;
           };
-          if (tx.methodId === "0xac9650d8" || tx.functionName === "multicall(bytes[] data)") {
+          if (tx.methodId === "0xac9650d8" || tx.functionName === "multicall(bytes[] data)" || tx.methodId === "0xe8e33700") {
             return null;
           }
           return {
             txnHash: tx.hash,
+            methodName: tx.functionName,
+            methodId: tx.methodId,
             date: new Date(parseInt(tx.timeStamp) * 1000).toUTCString(),
             from: FinalFromAddress || '',
             to: FinalToAddress || '',
