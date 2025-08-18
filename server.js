@@ -256,7 +256,7 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
   const contractAddress1 = '0x11353b85DBf896da69FC045D3c6014874Dfc2Aaa'; // First pool address
   const contractAddress2 = '0x9dc046ddf406155e50ee96c6200af60fa0f7180b'; // Second pool address
   const contractAddress3 = '0xd0e1d163c271f6f976ba23f67f3e371c9ad20f9c'; // Third pool address
-  const contractAddressF3HE = '0xacc13a0b28d86b8ec58d959e7f97ad737a88dd6e';
+  const contractAddressF3HE = '0x0e7f37fdb7fdb33cabe8e1d8fa4e837350be1eb8';
 
   const apiUrl = 'https://api.bscscan.com/api';
   const endpoint = '?module=account&action=tokentx';
@@ -414,6 +414,9 @@ app.get('/getGlobalAllSwappedAllDataBothPoolsF3HE', async (req, res) => {
           } else {
             FinalFromAddress = tx.to2;
           };
+          if (tx.methodId === "0xac9650d8" || tx.functionName === "multicall(bytes[] data)") {
+            return null;
+          }
           return {
             txnHash: tx.hash,
             date: new Date(parseInt(tx.timeStamp) * 1000).toUTCString(),
@@ -448,7 +451,7 @@ app.get('/getMySwappedAllDataV3PoolSMWTest', async (req, res) => {
   const contractAddress = '0x11353b85DBf896da69FC045D3c6014874Dfc2Aaa';
   const contractAddress2 = '0x9dc046ddf406155e50ee96c6200af60fa0f7180b';
   const contractAddress3 = '0xd0e1d163c271f6f976ba23f67f3e371c9ad20f9c';
-  const contractAddressF3HE = '0xacc13a0b28d86b8ec58d959e7f97ad737a88dd6e';
+  const contractAddressF3HE = '0x0e7f37fdb7fdb33cabe8e1d8fa4e837350be1eb8';
   const apiUrl = 'https://api.bscscan.com/api';
   const endpoint = '?module=account&action=tokentx';
   const endpoint2 = '?module=account&action=txlist';
