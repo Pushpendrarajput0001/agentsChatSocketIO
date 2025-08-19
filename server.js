@@ -741,10 +741,11 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
               ? (parseFloat(usdtvalue) / parseFloat(Quantity)).toFixed(12)
               : '0.000000000000';
           const swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out'
+          const valueUSDT = parseFloat(usdtvalue) || 0.0;
           if(swapType === 'In'){
-            totalBuy += usdtvalue || 0.0
+            totalBuy += valueUSDT || 0.0
           }else{
-            totalSell += usdtvalue || 0.0
+            totalSell += valueUSDT || 0.0
           }
           return {
             txnHash: tx.hash,
@@ -765,8 +766,8 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
 
       const responseObj = {
         transactions: formattedTransactions,
-        totalBuy,
-        totalSell,
+        totalBuy : totalBuy.toFixed(2),
+        totalSell : totalSell.toFixed(2),
       };
 
       res.status(200).json(responseObj);
