@@ -779,10 +779,10 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
 
       res.status(200).json(responseObj);
     } else {
-      res.status(500).json({ error: 'Failed to fetch token transfers' });
+      res.status(500).json({ error: 'Error fetching token transfers of crypto data buy and sell:',tokenSymbol });
     }
   } catch (error) {
-    console.error('Error fetching token transfers:', error);
+    console.error('Error fetching token transfers of crypto data buy and sell:',tokenSymbol, error);
     if (error.response) {
     console.error('Axios Error Response:', error.response.data);
     res.status(500).json({
