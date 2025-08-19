@@ -632,12 +632,12 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
   const tokenSymbol = req.query.tokenSymbol;
   const finalContractAddress = tokenSymbol === 'F3HE' ? contractAddressF3HE : contractAddress2
   const web3 = new Web3();
-  const BSCSCAN_API_KEY = 'WZ9JKR4TAZXA2XZVCZPDJ6DM8GNVS3QPA5';
+  const BSCSCAN_API_KEY_NEW = 'WZ9JKR4TAZXA2XZVCZPDJ6DM8GNVS3QPA5';
   try {
     const response2 = await axios.get(apiUrl + endpoint, {
       params: {
         address: finalContractAddress,
-        apikey: BSCSCAN_API_KEY,
+        apikey: BSCSCAN_API_KEY_NEW,
         sort: 'desc',
         page: 1,
         offset: 0
