@@ -567,7 +567,12 @@ app.get('/getMySwappedAllDataV3PoolSMWTest', async (req, res) => {
             !isNaN(parseFloat(usdtvalue)) && !isNaN(parseFloat(Quantity)) && parseFloat(Quantity) !== 0
               ? (parseFloat(usdtvalue) / parseFloat(Quantity)).toFixed(12)
               : '0.000000000000';
-          const swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out'
+          let swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out';
+
+          const methodId = tx.methodId;
+          if (methodId === '0x2213bc0b') {
+            swapType = swapType === 'In' ? 'Out' : 'In';
+          }
           return {
             txnHash: tx.hash,
             date: new Date(parseInt(tx.timeStamp) * 1000).toUTCString(),
@@ -667,6 +672,7 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
         if (matchingTx4) {
           if (!uniqueTransactionsfor2[tx.hash]) {
             uniqueTransactionsfor2[tx.hash] = tx;
+            //console.log(`TxHash TokenName1 : ${tx.hash} : ${tx.tokenName}`)
           } else {
             const secondTx = uniqueTransactionsfor2[tx.hash];
             secondTx.from2 = tx.from;
@@ -676,6 +682,7 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
             secondTx.pancakeV3Router = 'PancakeSwap V3: BSC-USD-F3 3'
             secondTx.signatureHashOfMeta = matchingTx4.methodId;
             secondTx.routerAddress = matchingTx4.contractAddress;
+            //console.log(`TxHash TokenName2 : ${tx.hash} : ${tx.tokenName}`)
           }
           //secondTx.fromOrtoAddress = matchingTx4.txFromAddress;
           //console.log(matchingTx4.txFromAddress);
@@ -742,7 +749,12 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
             !isNaN(parseFloat(usdtvalue)) && !isNaN(parseFloat(Quantity)) && parseFloat(Quantity) !== 0
               ? (parseFloat(usdtvalue) / parseFloat(Quantity)).toFixed(12)
               : '0.000000000000';
-          const swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out'
+          let swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out';
+
+          const methodId = tx.methodId;
+          if (methodId === '0x2213bc0b') {
+            swapType = swapType === 'In' ? 'Out' : 'In'; // Flip the value
+          }
           const valueUSDT = parseFloat(usdtvalue) || 0.0;
           const valueQuantity = parseFloat(Quantity) || 0.0;
           if(swapType === 'In'){
