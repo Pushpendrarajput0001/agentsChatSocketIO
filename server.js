@@ -752,8 +752,8 @@ app.get('/getMySwappedAllDataBuyAndSell', async (req, res) => {
           let swapType = tx.tokenName === 'Binance-Peg BSC-USD' ? 'In' : 'Out';
 
           const methodId = tx.methodId;
-          if (methodId === '0x2213bc0b') {
-            swapType = swapType === 'In' ? 'Out' : 'In'; // Flip the value
+          if (methodId === '0x2213bc0b' || methodId === '0x38ed1739') {
+            swapType = swapType === 'In' ? 'Out' : 'In';
           }
           const valueUSDT = parseFloat(usdtvalue) || 0.0;
           const valueQuantity = parseFloat(Quantity) || 0.0;
